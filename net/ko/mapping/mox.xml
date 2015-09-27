@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mainController xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://api.kobject.net/xml/mapping.xsd">
+	<mappings>
+		<mapping requestURL="action/{#(.+?)#}.do" responseURL="$1.act"></mapping>
+	</mappings>
+	<filters>
+		<filter requestURL="action/{#(.+?)#}/{#(.+?)#}/{#(.*?)#}" responseURL="action/$1.do">
+			<parameter name="action" position="2"/>
+			<parameter name="params" position="3"/>
+		</filter>
+	</filters>
+	<ajax-includes>
+	</ajax-includes>
+</mainController>

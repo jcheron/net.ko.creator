@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<zones xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://api.kobject.net/xml/zones.xsd">
+	<zone id="page" caption="page" type="html" destType="html" templateType="">
+		<description>Page HTML</description>
+		<content><![CDATA[<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+</head>
+<body></body>
+</html>
+]]></content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="table" caption="table" type="html" destType="html" templateType="">
+		<description>Table HTML</description>
+		<content><![CDATA[<table>
+	<tr>
+		<td></td>
+	</tr>
+</table>
+]]>
+		</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="fieldset" caption="fieldset" type="html" destType="html" templateType="">
+		<description>Fieldset</description>
+		<content><![CDATA[<fieldset>
+	<legend></legend>
+</fieldset>
+]]></content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="button" caption="button" type="html" destType="html" templateType="">
+		<description>Button</description>
+		<content><![CDATA[<input id="btId" type="button" class="btn" value="btCaption">
+]]></content>
+		<defaultValue></defaultValue>
+		<selection>btId</selection>
+		<params>btId</params>
+	</zone>
+	<zone id="div" caption="div" type="html" destType="html" templateType="">
+		<description>Div</description>
+		<content><![CDATA[<div id="idDiv" class=""></div>
+]]></content>
+		<defaultValue></defaultValue>
+		<selection>idDiv</selection>
+		<params>idDiv</params>
+	</zone>
+	<zone id="javascript" caption="javascript" type="html" destType="html" templateType="">
+		<description>Script javascript</description>
+		<content><![CDATA[<script type="text/javascript"></script>
+]]></content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="css" caption="css" type="html" destType="html" templateType="">
+		<description>Feuille de style css</description>
+		<content><![CDATA[<link rel="stylesheet" type="text/css" href="style.css" />
+]]></content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="charset" caption="charset" type="html" destType="html" templateType="">
+		<description>Définition du charset</description>
+		<content><![CDATA[<meta charset="UTF-8" />
+]]></content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	
+	<zone id="redirect" caption="Redirect" type="func" destType="func" templateType="view">
+		<description>URL de redirection après submit</description>
+		<content><![CDATA[{#redirectUrl:{URL}#}]]></content>
+		<defaultValue> </defaultValue>
+		<selection>URL</selection>
+		<params>URL</params>
+	</zone>
+	
+	<zone id="idForm" caption="idForm" type="func" destType="func" templateType="view">
+		<description>Identifiant du formulaire</description>
+		<content><![CDATA[{#set:this.id=idForm#}]]></content>
+		<defaultValue> </defaultValue>
+		<selection>idForm</selection>
+		<params>idForm</params>
+	</zone>
+	<zone id="mask" caption="mask" type="func" destType="func" templateType="list">
+		<description>Définition du masque d'affichage de la liste</description>
+		<content><![CDATA[{#mask:{defaultValue}#}]]></content>
+		<defaultValue> </defaultValue>
+		<selection> </selection>
+		<params>mask</params>
+	</zone>
+	<zone id="editable" caption="editable" type="func" destType="func" templateType="list">
+		<description>Rend la liste éditable</description>
+		<content><![CDATA[{#func:this.setEditable({defaultValue})#}]]></content>
+		<defaultValue>true</defaultValue>
+		<selection>true</selection>
+		<params>editable</params>
+	</zone>
+
+	<zone id="showCaptions" caption="en-têtes colonnes" type="func" destType="func" templateType="list">
+		<description>Affiche les en-têtes de colonnes</description>
+		<content><![CDATA[{#set:this.isShowCaption={defaultValue}#}]]></content>
+		<defaultValue>true</defaultValue>
+		<selection>true</selection>
+		<params>showCaption</params>
+	</zone>
+	<zone id="formModal" caption="Form. modale" type="func" destType="func" templateType="list">
+		<description>Rend le formulaire ajax modal</description>
+		<content><![CDATA[{#set:this.isFormModal={defaultValue}#}]]></content>
+		<defaultValue>false</defaultValue>
+		<selection>false</selection>
+	</zone>
+	<zone id="koDetails" caption="Form. de détail" type="func" destType="func" templateType="list">
+		<description>Affiche les boutons de modifications des objets de détail</description>
+		<content><![CDATA[{#set:this.koDetails={defaultValue}#}]]></content>
+		<defaultValue>true</defaultValue>
+		<selection>true</selection>
+	</zone>
+	<zone id="updateMsg" caption="Update message" type="func" destType="func" templateType="list">
+		<description>Définit le masque d'affichage du message de mise à jour de l'objet modifié</description>
+		<content><![CDATA[{#func:this.setUpdateMessage({defaultValue})#}]]></content>
+		<defaultValue>{toString} {updateMessage}</defaultValue>
+		<selection>{toString} {updateMessage}</selection>
+		<params>updateMessage</params>
+	</zone>
+	<zone id="setChecked" caption="Checked" type="func" destType="func" templateType="list">
+		<description>Ajoute des cases à cocher devant chaque objet</description>
+		<content><![CDATA[{#func:this.setChecked({defaultValue})#}]]></content>
+		<defaultValue>true</defaultValue>
+		<selection>true</selection>
+		<params>checked</params>
+	</zone>
+	<zone id="sql" caption="sql" type="func" destType="func" templateType="list">
+		<description>Modification de l'instruction sql</description>
+		<content><![CDATA[{#sql:{defaultValue}#}]]></content>
+		<defaultValue>SELECT * FROM table</defaultValue>
+		<selection>table</selection>
+		<params>sqlInstruction</params>
+	</zone>
+	
+	<zone id="display" caption="Display" type="func" destType="func" templateType="">
+		<description>Modification du display</description>
+		<content><![CDATA[{#koDisplay:completeClassName#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>completeClassName</selection>
+		<params>completeClassName</params>
+	</zone>
+	
+	<zone id="ajaxIncludes" caption="Ajax includes" type="func" destType="func" templateType="">
+		<description>Activation insertion ajax</description>
+		<content><![CDATA[{#set:this.ajaxIncludes=true#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>true</selection>
+		<params>includes</params>
+	</zone>	
+	<zone id="func" caption="Fonction" type="func" destType="func" templateType="">
+		<description>Insertion d'une fonction</description>
+		<content><![CDATA[{#func:Classe.methode()#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>Classe|methode</selection>
+		<params>classe|méthode</params>
+	</zone>
+	<zone id="set" caption="Affectation" type="func" destType="func" templateType="">
+		<description>Modification d'un membre</description>
+		<content><![CDATA[{#set:this.membre=valeur#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>membre|valeur</selection>
+		<params>membre|valeur</params>
+	</zone>
+
+	<zone id="var" caption="Variable" type="func" destType="func" templateType="">
+		<description>Déclaration et intialisation d'une variable</description>
+		<content><![CDATA[{#var:variableName=valeur#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>variableName|valeur</selection>
+		<params>variableName|valeur</params>
+	</zone>
+
+	<zone id="varUse" caption="Ins. Variable" type="func" destType="func" templateType="">
+		<description>Utilisation d'une variable précédemment déclarée</description>
+		<content><![CDATA[{#%variableName%#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>variableName</selection>
+		<params>variableName</params>
+	</zone>
+	
+	<zone id="include" caption="Include" type="func" destType="func" templateType="">
+		<description>Inclusion d'une page</description>
+		<content><![CDATA[{#include:{defaultValue}#}]]></content>
+		<defaultValue>pageURL</defaultValue>
+		<selection>pageURL</selection>
+		<params>pageURL</params>
+	</zone>
+	<zone id="kobject" caption="Kobject" type="func" destType="func" templateType="">
+		<description>Inclusion d'une instance de KObject</description>
+		<content><![CDATA[{#kobject:("tableName","where","mask")#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>tableName|where|mask</selection>
+		<params>tableName|where|mask</params>
+	</zone>
+	<zone id="klistobject" caption="Klistobject" type="func" destType="func" templateType="">
+		<description>Inclusion d'une instance de liste KListObject</description>
+		<content><![CDATA[{#klistobject:("tableName","mask")#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>tableName|mask</selection>
+		<params>tableName|mask</params>
+	</zone>
+	
+		<zone id="klistTemplate" caption="klistTemplate" type="func" destType="func" templateType="">
+		<description>Inclusion d'une vue de type list</description>
+		<content><![CDATA[{#klistTemplate:("fileName","sqlWhere")#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>fileName|sqlWhere</selection>
+		<params>fileName|sqlWhere</params>
+	</zone>
+
+	<zone id="groupby" caption="Group by" type="func" destType="func" templateType="list">
+		<description>Regroupe les objets de la liste en fonction d'un masque</description>
+		<content><![CDATA[{#set:this.groupByMask="mask"#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>mask</selection>
+		<params>mask</params>
+	</zone>
+	
+	<zone id="addGroupBy" caption="addGroupBy" type="func" destType="func" templateType="list">
+		<description>Ajoute un masque de regroupement sur la liste d'objets</description>
+		<content><![CDATA[{#func:this.addGroupByMask("mask")#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>mask</selection>
+		<params>mask</params>
+	</zone>
+	
+	<zone id="listContentUrl" caption="listContentUrl" type="func" destType="func" templateType="list">
+		<description>Définit l'URL de rafraichissement de la liste</description>
+		<content><![CDATA[{#set:this.listContentUrl="url"#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>url</selection>
+		<params>url</params>
+	</zone>
+
+	<zone id="editFormUrl" caption="editFormUrl" type="func" destType="func" templateType="list">
+		<description>Définit l'URL de la boîte de dialogue de modification/ajout</description>
+		<content><![CDATA[{#set:this.editFormUrl="url"#}]]></content>
+		<defaultValue></defaultValue>
+		<selection>url</selection>
+		<params>url</params>
+	</zone>
+
+	<zone id="_selector" caption="selector" type="func" destType="func" templateType="list">
+		<description>Définit une touche d'édition pour la modification</description>
+		<content><![CDATA[{#func:this.addSelector(113)#}
+]]></content>
+		<defaultValue></defaultValue>
+		<selection>113</selection>
+	</zone>
+
+	<zone id="_ajx" caption="ajx" type="zone" destType="zone" templateType="list">
+		<description>Zone ajax d'affichage de la mise à jour de l'objet</description>
+		<content>{_ajx}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_listContent" caption="listContent" type="zone" destType="zone" templateType="list">
+		<description>div ajax définissant la zone à mettre à jour après modification de la liste</description>
+		<content>{_listContent}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_filtre" caption="filtre" type="zone" destType="zone" templateType="list">
+		<description>Zone HTML permettant de filtrer les objets de la liste</description>
+		<content>{_filtre}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_page" caption="page" type="zone" destType="zone" templateType="list">
+		<description>Zone d'affichage de la liste</description>
+		<content>{_page}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_navBarre" caption="Barre de navigation" type="zone" destType="zone" templateType="list">
+		<description>Barre de navigation entre les pages</description>
+		<content>{_navBarre}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_pageCounter" caption="Numéros de page" type="zone" destType="zone" templateType="list">
+		<description>Zone affichant les numéros de page</description>
+		<content>{_pageCounter}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="/_listContent" caption="/listContent" type="zone" destType="zone" templateType="list">
+		<description>fin de la div ajax définissant la zone à mettre à jour après modification de la liste</description>
+		<content>{/_listContent}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_addBtn" caption="Bouton ajouter" type="zone" destType="zone" templateType="list">
+		<description>Bouton ajouter</description>
+		<content>{_addBtn}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_defaultTemplate" caption="_defaultTemplate" type="zone" destType="zone" templateType="list">
+		<description>Template de liste par défaut</description>
+		<content>{#func:this.setEditable(true)#}
+{_ajx}
+{_listContent}
+	{_filtre}
+	{_page}
+{/_listContent}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+
+	<zone id="_form" caption="form" type="zone" destType="zone" templateType="view">
+		<description>Ouverture du formulaire par défaut</description>
+		<content>{_form}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+		
+	<zone id="_fieldset" caption="fieldset" type="zone" destType="zone" templateType="view">
+		<description>Fieldset par défaut</description>
+		<content>{_fieldset}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_deleteCk" caption="Suppr. obj." type="zone" destType="zone" templateType="view">
+		<description>Case à cocher suppression de l'objet</description>
+		<content>{_deleteCk}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_buttons" caption="Bouton valider" type="zone" destType="zone" templateType="view">
+		<description>Bouton validation du formulaire</description>
+		<content>{_buttons}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="/_fieldset" caption="/fieldset" type="zone" destType="zone" templateType="view">
+		<description>Fermeture du fieldset par défaut</description>
+		<content>{/_fieldset}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="/_form" caption="/form" type="zone" destType="zone" templateType="view">
+		<description>Fermeture du formulaire par défaut</description>
+		<content>{/_form}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_defaultTemplate" caption="_defaultTemplate" type="zone" destType="zone" templateType="view">
+		<description>Template de view par défaut</description>
+		<content>{_form}
+{_fieldset}
+{_deleteCk}
+{_buttons}
+{/_fieldset}
+{/_form}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_fieldset" caption="fieldset" type="zone" destType="zone" templateType="show">
+		<description>Fieldset par défaut</description>
+		<content>{_fieldset}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="/_fieldset" caption="/fieldset" type="zone" destType="zone" templateType="show">
+		<description>Fermeture du fieldset par défaut</description>
+		<content>{/_fieldset}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+	<zone id="_defaultTemplate" caption="_defaultTemplate" type="zone" destType="zone" templateType="show">
+		<description>Template d'affichage par défaut</description>
+		<content>{_fieldset}
+{/_fieldset}</content>
+		<defaultValue></defaultValue>
+		<selection></selection>
+	</zone>
+</zones>

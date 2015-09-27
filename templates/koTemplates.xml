@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+	<template id="func.function" name="Fonction" description="Insertion d'une fonction"
+		context="net.ko.creator.preference.contextType.ko" enabled="true">{#func:${name}()#}</template>
+</templates>

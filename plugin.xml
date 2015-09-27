@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Kobject"
+            id="net.ko.creator.commands.category">
+      </category>
+      <command
+            name="Add Kobject..."
+            categoryId="net.ko.creator.commands.category"
+            id="net.ko.creator.commands.koCommand">
+      </command>
+      <command
+            name="Kobject templates..."
+            defaultHandler="net.ko.creator.handlers.KoWizardHandler"
+            categoryId="net.ko.creator.commands.category"
+            id="net.ko.creator.commands.koTemplate">
+      </command>
+      <command
+            name="Nouveau display..."
+            categoryId="net.ko.creator.commands.category"
+            defaultHandler="net.ko.creator.handlers.KoWizardHandler"
+            id="net.ko.creator.commands.kodisplay">
+      </command>
+      <command name="Association des displays..." id="net.ko.creator.commands.assodisplays" 
+      		categoryId="net.ko.creator.commands.category"
+      		defaultHandler="net.ko.creator.handlers.KoWizardHandler">
+            <!--<enabledWhen>
+    			<with variable="selection">
+        			<iterate ifEmpty="false">
+            			<instanceof type="org.eclipse.core.resources.IResource"/>
+            			<test property="org.eclipse.core.resources.name" value="*.java"/>
+        			</iterate>
+    			</with>
+			</enabledWhen>-->
+      </command>
+      <command
+            name="Nouveau mapping contrôleur..."
+            categoryId="net.ko.creator.commands.category"
+            defaultHandler="net.ko.creator.handlers.KoWizardHandler"
+            id="net.ko.creator.commands.komappingcontroller">
+      </command>
+      <command name="Association des mappings contrôleurs..." id="net.ko.creator.commands.assomappings" 
+      		categoryId="net.ko.creator.commands.category"
+      		defaultHandler="net.ko.creator.handlers.KoWizardHandler">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="net.ko.creator.commands.koCommand"
+            class="net.ko.creator.handlers.KoHandler">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="net.ko.creator.commands.koCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            sequence="M1+;"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="Kobject"
+               mnemonic="M"
+               id="net.ko.creator.menus.sampleMenu">
+            <command
+                  commandId="net.ko.creator.commands.koCommand"
+                  mnemonic="S"
+                  id="net.ko.creator.menus.koCommand">
+            </command>
+            <command
+               commandId="net.ko.creator.commands.koTemplate"
+               id="net.ko.creator.menus.template">
+            </command>
+            <separator name="ko.classes" visible="true" />
+            <command commandId="net.ko.creator.commands.kodisplay" id="net.ko.creator.menus.display"/>
+            <command commandId="net.ko.creator.commands.assodisplays" id="net.ko.creator.menu.assodisplay"/>
+            <separator name="ko.controllers" visible="true" />
+            <command commandId="net.ko.creator.commands.komappingcontroller" id="net.ko.creator.menus.komappingcontroller"/>
+            <command commandId="net.ko.creator.commands.assomappings" id="net.ko.creator.menu.assomappings"/>
+         </menu>
+
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="net.ko.creator.toolbars.sampleToolbar">
+            <command
+                  commandId="net.ko.creator.commands.koCommand"
+                  icon="icons/favicon.png"
+                  tooltip="add Kobject to a project"
+                  id="net.ko.creator.toolbars.koCommand">
+            </command>
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+         <command
+               commandId="net.ko.creator.commands.koTemplate"
+               label="Kobject templates"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Kobject creator configuration"
+            extensions="ko"
+            icon="icons/favicon.png"
+            contributorClass="net.ko.creator.editors.MultiPageEditorContributor"
+            class="net.ko.creator.editors.MultiPageEditor"
+            id="net.ko.creator.editors.MultiPageEditor">
+      </editor>
+      <editor name="KObject Map editor"
+      extensions="map"
+      icon="icons/map.png"
+      contributorClass="net.ko.creator.editors.map.MapEditorContributor"
+      class="net.ko.creator.editors.map.MapEditor"
+      id="net.ko.creator.map.editor">
+      </editor>
+      <editor
+            name="Kobject template editor"
+            extensions="tpl"
+            icon="icons/tpl.png"
+            contributorClass="net.ko.creator.editors.templates.MultiPageTemplateContributor"
+            class="net.ko.creator.editors.templates.MultiPageTemplateEditor"
+            id="net.ko.creator.editors.Template">
+      </editor>
+      <editor
+            name="Kobject view editor"
+            extensions="view"
+            icon="icons/view.png"
+            contributorClass="net.ko.creator.editors.templates.MultiPageTemplateContributor"
+            class="net.ko.creator.editors.templates.MultiPageTemplateEditor"
+            id="net.ko.creator.editors.Template.view">
+      </editor>
+      <editor
+            name="Kobject List editor"
+            extensions="list"
+            icon="icons/list.png"
+            contributorClass="net.ko.creator.editors.templates.MultiPageTemplateContributor"
+            class="net.ko.creator.editors.templates.MultiPageTemplateEditor"
+            id="net.ko.creator.editors.Template.list">
+      </editor>
+            <editor
+            name="Kobject show editor"
+            extensions="show"
+            icon="icons/view.png"
+            contributorClass="net.ko.creator.editors.templates.MultiPageTemplateContributor"
+            class="net.ko.creator.editors.templates.MultiPageTemplateEditor"
+            id="net.ko.creator.editors.Template.show">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Kobject"
+            id="net.ko.wizards.category">
+      </category>
+	<wizard
+            name="Kobject wizard list template"
+            class="net.ko.wizard.KoWizard"
+            id="net.ko.wizard.kowizard.list"
+            icon="icons/favicon.png"
+            category="net.ko.wizards.category">
+            <description>Permet de créer des templates Kobject</description>
+            <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+	<wizard
+            name="Kobject wizard view template (Formulaire)"
+            class="net.ko.wizard.KoWizard"
+            id="net.ko.wizard.kowizard.view"
+            icon="icons/favicon.png"
+            category="net.ko.wizards.category">
+      </wizard>
+      	<wizard
+            name="Kobject wizard show template (Affichage)"
+            class="net.ko.wizard.KoWizard"
+            id="net.ko.wizard.kowizard.show"
+            icon="icons/favicon.png"
+            category="net.ko.wizards.category">
+      </wizard>
+</extension>
+      <extension
+            point="org.eclipse.ui.preferencePages">
+      <page class="net.ko.creator.preferencepage.KoPreferencePage" id="net.ko.creator.preferences" name="KObject"/> 
+      <page class="net.ko.creator.preferencepage.KoPreferencePage" id="net.ko.creator.preferences.kotemplates" name="Templates" category="net.ko.creator.preferences"> 
+      </page>
+      <page class="net.ko.creator.preferencepage.MapsPreferencePage" id="net.ko.creator.preferences.map" name="Maps" category="net.ko.creator.preferences"> 
+      </page>
+      </extension>
+      <extension
+            point="org.eclipse.ui.editors.templates">
+            <contextType class="net.ko.creator.preferencepage.KoTemplateContextType" id="net.ko.creator.preference.contextType.ko" name="KObject">
+            </contextType>
+            <include file="templates/koTemplates.xml" translations="templates/koTemplates.xml">
+</include>
+      </extension>
+      <extension
+            point="org.eclipse.core.runtime.adapters">
+            <factory adaptableType="net.ko.bean.ZTypedRegion" class="net.ko.creator.properties.EditorsAdapterFactory">
+            <adapter type="org.eclipse.ui.views.properties.IPropertySource"/>
+            </factory>
+      </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor contributorId="net.ko.creator.map.editor" labelProvider ="net.ko.creator.editors.map.SectionPropertiesLabelProvider">
+             <propertyCategory category="first"/>
+      </propertyContributor>
+   </extension>
+    <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="net.ko.creator.map.editor">
+         <propertyTab category="first" id="map.tab.ajaxinclude" label="AjaxInclude"/>
+      </propertyTabs>
+      <propertyTabs contributorId="net.ko.creator.map.editor">
+         <propertyTab category="first" id="map.tab.mappings" label="Mappings"/>
+         <propertyTab category="first" id="map.tab.virtualmappings" label="VirtualMappings"/>
+         <propertyTab category="first" id="map.tab.appearence" label="Apparence" afterTab="map.tab.ajaxinclude"/>
+      </propertyTabs>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="net.ko.creator.map.editor">
+         <propertySection
+               class="net.ko.creator.editors.map.MyPropertiesSection"
+               id="map.section.ajaxinclude"
+               tab="map.tab.ajaxinclude">
+               <input type="net.ko.creator.editors.map.part.AppAbstractEditPart"/>
+               <input type="net.ko.creator.editors.map.part.AppAbstractConnectionEditPart"/>
+               <input type="net.ko.creator.editors.map.part.tree.AppTreeEditPart"/>
+         </propertySection>
+         <propertySection
+               class="net.ko.creator.editors.map.properties.MappingsPropertiesSection"
+               id="map.section.mappings"
+               tab="map.tab.mappings">
+               <input type="net.ko.creator.editors.map.part.MoxFilePart"/>
+         </propertySection>
+         <propertySection
+               class="net.ko.creator.editors.map.properties.VirtualMappingsPropertiesSection"
+               id="map.section.virtualmappings"
+               tab="map.tab.virtualmappings">
+               <input type="net.ko.creator.editors.map.part.MoxFilePart"/>
+         </propertySection>
+         <propertySection
+               class="net.ko.creator.editors.map.properties.AppearencePropertySection"
+               id="map.section.appearence"
+               tab="map.tab.appearence">
+               <input type="net.ko.creator.editors.map.part.AppAbstractEditPart"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+<extension point="org.eclipse.ui.themes">
+    <themeElementCategory
+        id="net.ko.creator.preferences.themeElementCategory"
+        label="KObject">
+        <description>
+            KObject maps
+        </description>
+    </themeElementCategory>
+        <themeElementCategory
+        id="net.ko.creator.preferences.themeElementCategory.maps"
+        label="Maps" parentId="net.ko.creator.preferences.themeElementCategory">
+        <description>
+            Maps font and colors
+        </description>
+    </themeElementCategory>
+    <colorDefinition
+        categoryId="net.ko.creator.preferences.themeElementCategory.maps"
+        id="ko.map.request_background_color"
+        label="request gradient color"
+        value="COLOR_DARK_BLUE">
+        <description>
+            Couleur de dégragé des objets de type AjaxRequest
+        </description>
+    </colorDefinition>
+    <colorDefinition
+        categoryId="net.ko.creator.preferences.themeElementCategory.maps"
+        id="ko.map.request_font_color" label="Request Font color" value="COLOR_BLACK">
+        <description>Ajax request font color</description>
+    </colorDefinition>
+    <fontDefinition
+        categoryId="net.ko.creator.preferences.themeElementCategory.maps"
+        id="ko.map.request_font" label="Request Font" value="Tahoma-normal-9">
+        <description>Ajax request font</description>
+    </fontDefinition>
+    <colorDefinition
+        categoryId="net.ko.creator.preferences.themeElementCategory.maps"
+        id="ko.map.js_font_color" label="JS Font color" value="COLOR_DARK_GREEN">
+        <description>JS font color</description>
+    </colorDefinition>
+    <fontDefinition
+        categoryId="net.ko.creator.preferences.themeElementCategory.maps"
+        id="ko.map.js_font" label="JS Font" value="Tahoma-normal-9">
+        <description>JS font</description>
+    </fontDefinition>
+    <colorDefinition
+        categoryId="net.ko.creator.preferences.themeElementCategory.maps"
+        id="ko.map.ajax_object_font_color" label="Ajax object Font color" value="COLOR_BLACK">
+        <description>Ajax object font color</description>
+    </colorDefinition>
+    <fontDefinition
+        categoryId="net.ko.creator.preferences.themeElementCategory.maps"
+        id="ko.map.ajax_object_font" label="Ajax object Font" value="Tahoma-normal-8">
+        <description>Ajax object font</description>
+    </fontDefinition>
+    <colorDefinition
+        categoryId="net.ko.creator.preferences.themeElementCategory.maps"
+        id="ko.map.connexion_color" label="Connexion color" value="COLOR_DARK_GREEN">
+        <description>Connexion color</description>
+    </colorDefinition>
+    <colorDefinition
+        categoryId="net.ko.creator.preferences.themeElementCategory.maps"
+        id="ko.map.connexion_highlight_color" label="Connexion highlight color" value="203, 232, 246">
+        <description>Connexion highlight color</description>
+    </colorDefinition>
+    <colorDefinition
+        categoryId="net.ko.creator.preferences.themeElementCategory.maps"
+        id="ko.map.connexion_highlight_dark_color" label="Connexion highligh dark color" value="38, 160, 218">
+        <description>Connexion highlight dark color</description>
+    </colorDefinition>
+</extension>
+</plugin>
